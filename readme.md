@@ -1,6 +1,14 @@
 # Hasher
 
 Repo for a standalone app for hashing PIDs.
+Many helper commands are contained within the control script in `ha.sh`.
+
+## Hash logic
+
+If you are here just to figure out how the hashed PIDs are calculated, the bulk of the work happens in the `src.hash_helper` module.
+This should be passed the IDP entity ID and the unhashed PID.
+These can be supplied either as separate strings, or as a single pre-concatenated string.
+However, **the order does matter**.
 
 ## Running the Hasher
 
