@@ -12,6 +12,23 @@ For example:
 ./ha.sh run path/to/csv1.csv path/to/csv2.csv ...
 ```
 
+## Build
+
+To build this repo and produce a single executable binary, run the control script's `build` task.
+
+```
+./ha.sh build
+```
+
+This currently runs the process locally - this will be improved in a future change to utilise docker for the build.
+
+This will produce an executable in the `dist` folder of the repo.
+This can be executed in a similar way to the run helper above: remember to specify the CSV file paths.
+
+```
+./dist/main path/to/csv.csv
+```
+
 ## Tests
 
 ### Unit Tests
