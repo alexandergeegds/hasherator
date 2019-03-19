@@ -3,6 +3,10 @@
 Repo for a standalone app for hashing PIDs.
 Many helper commands are contained within the control script in `ha.sh`.
 
+Note that the scripts here currently assume the CSV files will have data headers in the first row of the file.
+It will currently choke if the headers are not the first line.
+As such, any CSV files passed to this script should be prepared such that the first row is headers.
+
 ## Hash logic
 
 If you are here just to figure out how the hashed PIDs are calculated, the bulk of the work happens in the `src.hash_helper` module.
