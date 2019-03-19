@@ -14,7 +14,7 @@ class Hasher:
         self.csv_settings = csv_settings_class()
 
     def process_input(self, input_path):
-        logger.debug(f'Parsing CSV {input_path}')
+        logger.debug(f'Parsing CSV: "{input_path}"')
         headers, rows = csv.read(input_path)
         self.csv_settings.next_csv(headers)
         add_hashed_pids(rows, self.csv_settings)
@@ -22,6 +22,7 @@ class Hasher:
         output_headers = headers[:]
         output_headers.append(HASHED_PID_COLUMN_NAME)
         csv.write(output_path, output_headers, rows)
+        logger.debug(f'Wrote output CSV file: "{output_path}"')
 
 
 def add_hashed_pids(data, csv_settings):
