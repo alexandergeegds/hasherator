@@ -5,17 +5,21 @@ from src.csv_settings import csv_settings as csv_settings_class
 
 HASHED_PID_COLUMN_NAME = 'gds_hashed_pid'
 HASHED_PID_FILE_SUFFIX = '_hpids'
+logger = logging.getLogger(__name__)
 
 
-def process_input(input_path):
-    headers, rows = csv.read(input_path)
-    csv_settings = csv_settings_class()
-    csv_settings.next_csv(headers)
-    add_hashed_pids(rows, csv_settings)
-    output_path = generate_destination(input_path)
-    output_headers = headers[:]
-    output_headers.append(HASHED_PID_COLUMN_NAME)
-    csv.write(output_path, output_headers, rows)
+class Hasher:
+    def __init__(self):
+        self.csv_settings = csv_settings_class()
+
+    def process_input(self, input_path):
+        headers, rows = csv.read(input_path)
+        self.csv_settings.next_csv(headers)
+        add_hashed_pids(rows, self.csv_settings)
+        output_path = generate_destination(input_path)
+        output_headers = headers[:]
+        output_headers.append(HASHED_PID_COLUMN_NAME)
+        csv.write(output_path, output_headers, rows)
 
 
 def add_hashed_pids(data, csv_settings):
