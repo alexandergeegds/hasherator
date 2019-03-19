@@ -1,3 +1,4 @@
+import logging
 import os
 import src.csv_helper as csv
 from src.hash_helper import hash
@@ -13,6 +14,7 @@ class Hasher:
         self.csv_settings = csv_settings_class()
 
     def process_input(self, input_path):
+        logger.debug(f'Parsing CSV {input_path}')
         headers, rows = csv.read(input_path)
         self.csv_settings.next_csv(headers)
         add_hashed_pids(rows, self.csv_settings)
