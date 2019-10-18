@@ -1,5 +1,9 @@
 # Hasher
 
+**This repository has been superceded** by the [alphagov version](https://github.com/alphagov/verify-idp-pid-hasherator) and may be deleted in the future. Please refer to that repository directly instead.
+
+## Introduction
+
 Repo for a standalone app for hashing PIDs.
 Many helper commands are contained within the control script in `ha.sh`.
 
